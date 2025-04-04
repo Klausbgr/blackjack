@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Jogo de Blackjack</h1>
+    <div id="game">
+        <p id="player-cards">Suas cartas: </p>
+        <p id="dealer-cards">Cartas da Mesa: </p>
+        <p id="player-bank">Seu saldo: 100</p>
+        <button onclick="hit()">Pedir Carta</button>
+        <button onclick="stand()">Parar</button>
+        <button onclick="restartGame()">Jogar Novamente</button>
+        <p id="result"></p>
+    </div>
+
+    <!-- Coloque o script no final do body para garantir que o DOM tenha carregado antes da execução -->
+    <script src="main.js"></script>
+</body>
+</html>
