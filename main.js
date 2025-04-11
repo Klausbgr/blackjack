@@ -40,9 +40,10 @@ function stand() {
     while (calculateHand(dealerHand) < 17) {
         dealerHand.push(deck.pop());
     }
-    updateUI();
+    updateUI(true); // Revela a mão da mesa
     determineWinner();
 }
+
 
 function determineWinner() {
     const playerScore = calculateHand(playerHand);
@@ -61,10 +62,20 @@ function determineWinner() {
     updateBank();
 }
 
-function updateUI() {
-    document.getElementById('player-cards').innerText = `Suas cartas: ${playerHand.map(c => c.value + c.suit).join(', ')}`;
-    document.getElementById('dealer-cards').innerText = `Cartas da Mesa: ${dealerHand.map(c => c.value + c.suit).join(', ')}`;
+function updateUI(revealDealer = false) {
+    document.getElementById('player-cards').innerText =
+        `Suas cartas: ${playerHand.map(c => c.value + c.suit).join(', ')}`;
+
+    if (revealDealer) {
+        document.getElementById('dealer-cards').innerText =
+            `Cartas da Mesa: ${dealerHand.map(c => c.value + c.suit).join(', ')}`;
+    } else {
+        let firstCard = dealerHand[0];
+        document.getElementById('dealer-cards').innerText =
+            `Cartas da Mesa: ${firstCard.value + firstCard.suit} `;
+    }
 }
+
 
 function updateBank() {
     document.getElementById('player-bank').innerText = `Seu saldo: ${playerBank}`;
